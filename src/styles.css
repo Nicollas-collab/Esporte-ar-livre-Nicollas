@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+*{
+    margin: 0px;
+    padding: 0x;
+    box-sizing: border-box;
+}
+
+:root{
+    --cor-primeira: #92400c;
+    --branca: #ffffff;
+    --cor-botao01: #0369A1;
+    --cor-botao02: #f97312;
+}
