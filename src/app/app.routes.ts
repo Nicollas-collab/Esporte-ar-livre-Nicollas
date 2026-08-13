@@ -1,3 +1,22 @@
 import { Routes } from '@angular/router';
 
-export const routes: Routes = [];
+import { HomeComponente } from './component/home-componente/home-componente';
+import { AtletaComponente } from './component/atleta-componente/atleta-componente';
+
+export const routes: Routes = [
+{
+    path:'',
+    redirectTo:"/home",
+    pathMatch: 'full'
+},
+
+{
+    path: '/home',
+    component:HomeComponente
+},
+
+{
+    path:"cadastroatletla",
+    component:AtletaComponente
+}
+];
