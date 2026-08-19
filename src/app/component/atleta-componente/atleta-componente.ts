@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import {FormsModule } from '@angular/forms'
+import { Component, ChangeDetectorRef } from '@angular/core';
+import { FormsModule } from '@angular/forms'
 import { AtletaService } from '../../service/atletas-service';
+import{ ActivatedRoute } from '@angular/router'
 import { Pessoa } from '../../models/Pessoa';
 
 @Component({
@@ -17,7 +18,7 @@ export class AtletaComponente {
    cpf = 0
    sexo = ''
    cep = 0
-   rua_logradouro = ''
+   ruaLogradouro = ''
    bairro = ''
    cidade = ''
    uf = ''
@@ -30,7 +31,7 @@ export class AtletaComponente {
  
    //DECLARAÇÃO DE FUNÇÕES
    exibeDados() {
-     console.log(this.nome, this.cpf, this.sexo, this.rua_logradouro, this.bairro, this.cidade, this.uf)
+     console.log(this.nome, this.cpf, this.sexo, this.ruaLogradouro, this.bairro, this.cidade, this.uf)
    }
  
    ngOnInit() {
@@ -52,7 +53,7 @@ export class AtletaComponente {
            this.cpf = objAtleta.cpf
            this.sexo = objAtleta.sexo
            this.cep = objAtleta.cep
-           this.rua_logradouro = objAtleta.rua_logradouro
+           this.ruaLogradouro = objAtleta.ruaLogradouro
            this.bairro = objAtleta.bairro
            this.cidade = objAtleta.cidade
            this.uf = objAtleta.uf
@@ -65,12 +66,12 @@ export class AtletaComponente {
    }
  
    enviaDadosAtleta() {
-     const pessoaAtleta = new Atleta()
+     const pessoaAtleta = new Pessoa()
      pessoaAtleta.nome = this.nome
      pessoaAtleta.cpf = this.cpf
      pessoaAtleta.sexo = this.sexo
      pessoaAtleta.cep = this.cep
-     pessoaAtleta.rua_logradouro = this.rua_logradouro
+     pessoaAtleta.ruaLogradouro = this.ruaLogradouro
      pessoaAtleta.bairro = this.bairro
      pessoaAtleta.cidade = this.cidade
      pessoaAtleta.uf = this.uf
@@ -123,7 +124,7 @@ export class AtletaComponente {
      this.cpf = 0
      this.sexo = ''
      this.cep = 0
-     this.rua_logradouro = ''
+     this.ruaLogradouro = ''
      this.bairro = ''
      this.cidade = ''
      this.uf = ''
