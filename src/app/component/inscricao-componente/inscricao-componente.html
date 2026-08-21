@@ -1,0 +1,21 @@
+<div id="div-inscricao">
+<h2>Inscrição na Corrida</h2>
+
+<form id="form-inscricao">
+    <label for="atletaCadastrado">Atleta Cadastrado</label>
+    <input type="select" name="selecioneAtleta" id="selecioneAtleta">
+
+    <label for="corridaEscolhida">Corrida Escolhida</label>
+    <input type="select" name="selecioneCorrida" id="selecioneCorrida">
+
+    <input type="checkbox" name="distancia5km" [(ngModel)] = "distancia5km" id="distancia5km" class="btnSelecao" value="5km" > 5km
+    <input type="checkbox" name="distancia10km" [(ngModel)] = "distancia10km" id="distancia10km" class="btnSelecao" value="10km" > 10km
+    <input type="checkbox" name="distancia25km" [(ngModel)] = "distancia25km" id="distancia25km" class="btnSelecao" value="25km" > 25km
+
+    <h2>Taxa da inscrição:</h2>
+
+    <div id="btns">
+        <button type="submit" id="btnAdd"> Finalizar e ir para Pagamento</button>
+    </div>
+</form>
+</div>
