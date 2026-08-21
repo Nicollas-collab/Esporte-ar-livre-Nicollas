@@ -33,7 +33,7 @@ export const routes: Routes = [
     },
     {
         path: "alteracorrida/:id",
-        component:CorridaListaComponente
+        component:CorridaComponent
     },
     {
         path:"cadastracorrida",
