@@ -1,53 +1,75 @@
 <div id="div-inscricao">
-<h2>Inscrição na Corrida</h2>
+  <h2>Inscrição na Corrida</h2>
 
-<form id="form-inscricao" (ngSubmit)="finalizarInscricao()">
-
+  <form id="form-inscricao" (ngSubmit)="finalizarInscricao()">
     <!-- Escolher o atleta -->
     <div class="campo">
       <label for="atletaCadastrado"> Atleta Cadastrado</label>
-      <select id="atletaCadastrado" name="atletaCadastrado" [(ngModel)]="atletaSelecionado"> <option [ngValue]="null"> Selecione o atleta </option>
+      <select id="atletaCadastrado" name="atletaCadastrado" [(ngModel)]="atletaSelecionado">
+        <option [ngValue]="null">Selecione o atleta</option>
 
         @for (atleta of atletas; track atleta.id) {
-          <option [ngValue]="atleta.id"> {{ atleta.nome }} - CPF: {{ atleta.cpf }}</option>
+          <option [ngValue]="atleta.id">{{ atleta.nome }} - CPF: {{ atleta.cpf }}</option>
         }
       </select>
-
     </div>
-
-
-    
 
     <!--Escolher a corrida-->
     <div class="campo">
       <label for="corridaEscolhida">Corrida Escolhida</label>
-      <select id="corridaEscolhida" name="corridaEscolhida"[(ngModel)]="corridaSelecionada"> <option [ngValue]="null"> Selecione a corrida</option>
+      <select id="corridaEscolhida" name="corridaEscolhida" [(ngModel)]="corridaSelecionada">
+        <option [ngValue]="null">Selecione a corrida</option>
 
         @for (corrida of corridas; track corrida.id) {
-          <option [ngValue]="corrida.id"> {{ corrida.descricao_corrida }}
-            @if (corrida.data_corrida) { - {{ corrida.data_corrida }}
+          <option [ngValue]="corrida.id">
+            {{ corrida.descricao_corrida }}
+            @if (corrida.data_corrida) {
+              - {{ corrida.data_corrida }}
             }
           </option>
         }
-
       </select>
-
-      </div>
-
-    <input type="checkbox" name="distancia5km" [(ngModel)] = "distancia5km" id="distancia5km" class="btnSelecao" value="5km" > 5km
-    <input type="checkbox" name="distancia10km" [(ngModel)] = "distancia10km" id="distancia10km" class="btnSelecao" value="10km" > 10km
-    <input type="checkbox" name="distancia25km" [(ngModel)] = "distancia25km" id="distancia25km" class="btnSelecao" value="25km" > 25km
-
-    <strong>Valor da Inscrição: R$ 89,90</strong>
-    
-    <div class="termos">
-        <label>
-          <input type="checkbox"name="termos"> Li e aceito os termos do regulamento da prova e declaração de saúde.</label>
-      </div>
-
-    <div id="btns">
-        <button type="submit" id="btnAdd"> Finalizar e ir para Pagamento</button>
     </div>
 
-</form>
+    <input
+      type="checkbox"
+      name="distancia5km"
+      [(ngModel)]="distancia5km"
+      id="distancia5km"
+      class="btnSelecao"
+      value="5km"
+    />
+    5km
+    <input
+      type="checkbox"
+      name="distancia10km"
+      [(ngModel)]="distancia10km"
+      id="distancia10km"
+      class="btnSelecao"
+      value="10km"
+    />
+    10km
+    <input
+      type="checkbox"
+      name="distancia25km"
+      [(ngModel)]="distancia25km"
+      id="distancia25km"
+      class="btnSelecao"
+      value="25km"
+    />
+    25km
+
+    <strong>Valor da Inscrição: R$ 89,90</strong>
+
+    <div class="termoss">
+      <label>
+        <input type="checkbox" name="termos" /> Li e aceito os termos do regulamento da prova e
+        declaração de saúde.</label
+      >
+    </div>
+
+    <div id="btns">
+      <button type="submit" id="btnAdd">Finalizar e ir para Pagamento</button>
+    </div>
+  </form>
 </div>
