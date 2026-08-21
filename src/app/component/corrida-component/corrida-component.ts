@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Corrida } from '../../models/Corrida';
 import { CorridaService } from '../../service/corrida-service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-corrida-component',
@@ -17,7 +18,23 @@ distancia5km = false
 distancia10km = false
 distancia25km = false
 
-constructor (private corridaService: CorridaService){}
+idCorrida = 0
+editar = false
+
+constructor (private corridaService: CorridaService, 
+  private activeRoute: ActivatedRoute,
+  private cdr: ChangeDetectorRef
+  
+  ){ }
+
+  ngOnInit(){
+    this.idCorrida = Number(this.activeRoute.snapshot.paramMap.get('id'))
+
+    if (this.idCorrida > 0){
+      this.editar = true
+      this.carregaDados(this.idCorrida)
+    }
+  }
 
 dadosFormulario(){
   const corrida = new Corrida()
@@ -27,9 +44,49 @@ dadosFormulario(){
   corrida.distancia10km = this.distancia10km
   corrida.distancia25km = this.distancia25km
 
-  this.corridaService.salvarCorrida(corrida)
+  if (this.editar) {
+    corrida.id = this.idCorrida
 
+    this.corridaService.alterarCorrida(corrida).subscribe({
+      next: (respostaApi) => {
+        return respostaApi
+      },
+      error: (msgErro) => {
+        return msgErro
+      }
+    })
+  } else {
+
+  this.corridaService.salvarCorrida(corrida).subscribe({
+    next: (respostaApi) => {
+      return respostaApi
+    },
+    error:(msgErro) => {
+      return msgErro
+    }
+
+
+  })
+}
   this.limparAtributos()
+}
+
+carregaDados(idCorrida: number) {
+  this.corridaService.listarCorrida(idCorrida)
+    .subscribe({
+      next: (dadosCorrida) => {
+        this.descricao_corrida = dadosCorrida.descricao_corrida
+        this.data_corrida = dadosCorrida.data_corrida
+        this.distancia5km = dadosCorrida.distancia5km
+        this.distancia10km = dadosCorrida.distancia10km
+        this.distancia25km = dadosCorrida.distancia25km
+
+        this.cdr.detectChanges()
+      },
+      error: (msgErro) => {
+        return msgErro
+      }
+    })
 }
 
 //limpando os dados

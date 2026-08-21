@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-
-import { Service } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Corrida } from '../models/Corrida';
 import { HttpClient } from '@angular/common/http';
@@ -9,74 +7,42 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class CorridaService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  salvarCorrida(corrida: Corrida) {
+  salvarCorrida(corrida: Corrida):Observable<Corrida> {
     let resposta = '';
 
     const urlApi = `https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/corrida`;
 
-    this.http.post<Corrida>(urlApi, corrida).subscribe({
-      next: (respostaApi) => {
-        return respostaApi;
-      },
+    return this.http.post<Corrida>(urlApi, corrida)
 
-      error: (msgErro) => {
-        return msgErro;
-      },
-    });
   }
 
-  listarCorridas() {
+  //listar todas as corridas
+  listarCorridas(): Observable<Corrida[]> {
     const urlApi = `https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/corrida`;
 
-    this.http.get<Corrida[]>(urlApi).subscribe({
-      next: (corridasApi) => {
-        return corridasApi;
-      },
-      error: (msgErro) => {
-        return msgErro;
-      },
-    });
+    return this.http.get<Corrida[]>(urlApi)
   }
 
-  listarCorrida(idCorrida: Number){
+  //litar uma corrida
+  listarCorrida(idCorrida: Number): Observable<Corrida>{
     const urlApi = `https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/corrida/${idCorrida}` 
 
-    this.http.get<Corrida[]>(urlApi).subscribe({
-        next: (respostaApi) => {
-            return respostaApi
-        },
-        error: (msgErro) => {
-            return msgErro
-        }
-    })
+    return this.http.get<Corrida>(urlApi)
+
   }
 
   excluirCorrida(idCorrida: Number) {
     const urlApi = `https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/corrida/${idCorrida}`;
 
-    this.http.delete<Corrida>(urlApi).subscribe({
-      next: (respostaApi) => {
-        return respostaApi;
-      },
-      error: (msgErro) => {
-        return msgErro;
-      },
-    });
+    return this.http.get<Corrida>(urlApi)
+
   }
 
-  alterarCorrida(corrida: Corrida) {
+  alterarCorrida(corrida: Corrida): Observable<Corrida> {
     const urlApi = `https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/${corrida.id}`;
 
-    this.http.put<Corrida>(urlApi, corrida).subscribe({
-      next: (respostaApi) => {
-        return respostaApi;
-      },
-
-      error: (msgErro) => {
-        return msgErro;
-      },
-    });
+    return this.http.put<Corrida>(urlApi, corrida)
   }
 }
