@@ -9,6 +9,9 @@
         <label for="nome">CPF</label>
         <input type="text" name="cpf" [(ngModel)] = "cpf" id="cp" class="input02" required maxlength="11" placeholder="informe seu cpf">
 
+        <label for="data">data de nacimento</label>
+        <input type="date" name="data" [(ngModel)] = "data" id="data" class="input02">
+
         <label for="sexo">sexo</label>
         <input type="radio" name="sexo" id="sexoM" class="btnSelecao" value="M" [(ngModel)] = "sexo"> Masculino
         <input type="radio" name="sexo" id="sexoF" class="btnSelecao" value="F" [(ngModel)] = "sexo"> Feminino
@@ -27,7 +30,7 @@
         <input type="text" name="cidade" [(ngModel)] = "cidade"  id="cidade" class="input02" required maxlength="60" placeholder="informe seu cidade">
 
         <label for="uf">UF</label>
-        <input type="text" name="uf" id="uf" class="input02" required maxlength="2" placeholder="informe seu uf">
+        <input type="text" name="uf" [(ngModel)] = "uf" id="uf" class="input02" required maxlength="2" placeholder="informe seu uf">
 
         <div id="div-btns">
             <button type="submit" id="btnAdd" (click)="exibeDados()"> Cadastrar Atleta</button>

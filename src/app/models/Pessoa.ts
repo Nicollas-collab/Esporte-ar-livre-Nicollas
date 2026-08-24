@@ -3,6 +3,7 @@ export class Pessoa{
     nome: string = ''
     sexo: string = ''
     cpf: number = 0
+    data: number = 0
     cep : number = 0
     ruaLogradouro: string = ''
     bairro: string = ''

@@ -16,6 +16,7 @@ export class AtletaComponente {
    id = 0
    nome = ''
    cpf = 0
+   data = 0
    sexo = ''
    cep = 0
    ruaLogradouro = ''
@@ -31,7 +32,7 @@ export class AtletaComponente {
  
    //DECLARAÇÃO DE FUNÇÕES
    exibeDados() {
-     console.log(this.nome, this.cpf, this.sexo, this.ruaLogradouro, this.bairro, this.cidade, this.uf)
+     console.log(this.nome, this.cpf, this.data, this.sexo, this.ruaLogradouro, this.bairro, this.cidade, this.uf)
    }
  
    ngOnInit() {
@@ -48,6 +49,7 @@ export class AtletaComponente {
      this.atletaService.listarAtleta(idAtleta)
        .subscribe({
          next: (objAtleta) => {
+          this.data = objAtleta.data
            this.id = objAtleta.id
            this.nome = objAtleta.nome
            this.cpf = objAtleta.cpf
@@ -69,6 +71,7 @@ export class AtletaComponente {
      const pessoaAtleta = new Pessoa()
      pessoaAtleta.nome = this.nome
      pessoaAtleta.cpf = this.cpf
+     pessoaAtleta.data = this.data
      pessoaAtleta.sexo = this.sexo
      pessoaAtleta.cep = this.cep
      pessoaAtleta.ruaLogradouro = this.ruaLogradouro
