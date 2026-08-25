@@ -61,6 +61,8 @@ export class AtletaListaComponent {
     this.router.navigate(['/cadastroatleta', idAtleta]);
   }
 
+  
+
   MostrarIdade(data_nascimento:string): number {
  {
     const nascimento = new Date(data_nascimento + 'T00:00:00')
@@ -70,8 +72,14 @@ export class AtletaListaComponent {
   
     const mes = hoje.getMonth() - nascimento.getMonth()
   
+  if(mes < 0 || (mes === 0 && hoje.getDate() < nascimento.getDate()))
+{
+  idade --
+}
     return idade
   }
+
+  
   }
   
 } //FIM COMPONENT AtletaListaComponent
