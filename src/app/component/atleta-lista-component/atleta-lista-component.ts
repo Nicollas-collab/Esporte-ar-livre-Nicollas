@@ -3,7 +3,6 @@ import { AtletaService } from '../../service/atletas-service';
 import { Pessoa } from '../../models/Pessoa';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-atleta-lista-component',
   imports: [],
@@ -61,25 +60,21 @@ export class AtletaListaComponent {
     this.router.navigate(['/cadastroatleta', idAtleta]);
   }
 
-  
+  MostrarIdade(data_nascimento: string): number {
+    {
+      const nascimento = new Date(data_nascimento + 'T00:00:00');
+      const hoje = new Date();
 
-  MostrarIdade(data_nascimento:string): number {
- {
-    const nascimento = new Date(data_nascimento + 'T00:00:00')
-    const hoje = new Date()
-  
-    let idade = hoje.getFullYear() - nascimento.getFullYear()
-  
-    const mes = hoje.getMonth() - nascimento.getMonth()
-  
-  if(mes < 0 || (mes === 0 && hoje.getDate() < nascimento.getDate()))
-{
-  idade --
-}
-    return idade
+      let idade = hoje.getFullYear() - nascimento.getFullYear();
+
+      const mes = hoje.getMonth() - nascimento.getMonth();
+
+      if (mes < 0 || (mes === 0 && hoje.getDate() < nascimento.getDate())) {
+        idade--;
+      }
+      return idade;
+    }
   }
 
-  
-  }
   
 } //FIM COMPONENT AtletaListaComponent
