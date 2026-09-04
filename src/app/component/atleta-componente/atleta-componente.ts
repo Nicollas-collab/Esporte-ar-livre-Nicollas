@@ -23,7 +23,9 @@ export class AtletaComponente {
    bairro = ''
    cidade = ''
    uf = ''
- 
+  altura = 0
+  peso = 0
+
    editar = false
    idAtleta = 0
  
@@ -32,7 +34,7 @@ export class AtletaComponente {
  
    //DECLARAÇÃO DE FUNÇÕES
    exibeDados() {
-     console.log(this.nome, this.cpf, this.data_nascimento, this.sexo, this.ruaLogradouro, this.bairro, this.cidade, this.uf)
+     console.log(this.nome, this.cpf, this.data_nascimento, this.sexo, this.ruaLogradouro, this.bairro, this.cidade, this.uf, this.altura, this.peso)
    }
  
    ngOnInit() {
@@ -59,6 +61,8 @@ export class AtletaComponente {
            this.bairro = objAtleta.bairro
            this.cidade = objAtleta.cidade
            this.uf = objAtleta.uf
+           this.altura = objAtleta.altura 
+           this.peso == objAtleta.peso
  
            this.cdr.detectChanges()
          }, error: (msgErro) => {
@@ -78,6 +82,8 @@ export class AtletaComponente {
      pessoaAtleta.bairro = this.bairro
      pessoaAtleta.cidade = this.cidade
      pessoaAtleta.uf = this.uf
+     pessoaAtleta.altura = this.altura
+     pessoaAtleta.peso = this.peso
  
      if (!this.editar) {
        this.atletaService.adicionarAtleta(pessoaAtleta)
@@ -132,6 +138,8 @@ export class AtletaComponente {
      this.bairro = ''
      this.cidade = ''
      this.uf = ''
+     this.altura = 0
+     this.peso = 0
    }
 
   /*
