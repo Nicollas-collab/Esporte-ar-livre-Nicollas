@@ -12,7 +12,9 @@ export class CorridaService {
   salvarCorrida(corrida: Corrida):Observable<Corrida> {
     let resposta = '';
 
-    const urlApi = `https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/corrida`;
+    //const urlApi = `https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/corrida`;
+
+    const urlApi = `http://127.0.0.1:8000/corrida/`
 
     return this.http.post<Corrida>(urlApi, corrida)
 
